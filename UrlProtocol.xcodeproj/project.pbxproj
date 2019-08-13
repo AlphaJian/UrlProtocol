@@ -16,6 +16,7 @@
 		C067D6282302581F00091786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C067D61F2302581F00091786 /* AppDelegate.swift */; };
 		C067D6292302581F00091786 /* BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C067D6202302581F00091786 /* BViewController.swift */; };
 		C067D62B2302581F00091786 /* AViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C067D6222302581F00091786 /* AViewController.swift */; };
+		C067D62D23025B2900091786 /* MyUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C067D62C23025B2900091786 /* MyUrlProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C067D6202302581F00091786 /* BViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BViewController.swift; sourceTree = "<group>"; };
 		C067D6212302581F00091786 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C067D6222302581F00091786 /* AViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AViewController.swift; sourceTree = "<group>"; };
+		C067D62C23025B2900091786 /* MyUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUrlProtocol.swift; sourceTree = "<group>"; };
 		C0CF1228221A765E004B1BE0 /* UrlProtocol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrlProtocol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD8C773908C756ADA3FBE27 /* Pods-UrlProtocol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrlProtocol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UrlProtocol/Pods-UrlProtocol.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				C067D6202302581F00091786 /* BViewController.swift */,
 				C067D6212302581F00091786 /* Info.plist */,
 				C067D6222302581F00091786 /* AViewController.swift */,
+				C067D62C23025B2900091786 /* MyUrlProtocol.swift */,
 			);
 			path = UrlProtocol;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C067D62B2302581F00091786 /* AViewController.swift in Sources */,
+				C067D62D23025B2900091786 /* MyUrlProtocol.swift in Sources */,
 				C067D6282302581F00091786 /* AppDelegate.swift in Sources */,
 				C067D6292302581F00091786 /* BViewController.swift in Sources */,
 				C067D6232302581F00091786 /* ViewController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import SnapKit
 
-class BViewController: UIViewController, URLSessionDelegate {
+class BViewController: UIViewController, URLSessionDelegate, WKNavigationDelegate {
     var configuration: WKWebViewConfiguration {
         let _configuration = WKWebViewConfiguration()
 
@@ -36,13 +36,20 @@ class BViewController: UIViewController, URLSessionDelegate {
 
         clearCache()
         webView = WKWebView(frame: UIScreen.main.bounds, configuration: self.configuration)
+        webView.navigationDelegate = self
         self.view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         print(url!)
         let request = URLRequest(url: URL(string: url!)!)
-        webView.load(request)
+
+        if let response = URLCache.shared.cachedResponse(for: request) {
+            webView.load(response.data, mimeType: "text/html", characterEncodingName: "UTF-8", baseURL: URL(string: url!)!)
+        } else {
+            webView.load(request)
+        }
+
 
     }
 
@@ -56,17 +63,33 @@ class BViewController: UIViewController, URLSessionDelegate {
         URLCache.shared.memoryCapacity = 0;
     }
 
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("finish")
+        let url = webView.url
+        if let url = webView.url {
+            let request = URLRequest(url: url)
+            let data = try? Data(contentsOf: url)
+            let cache = URLCache.shared
+            let response = URLResponse(url: url, mimeType: "text/html", expectedContentLength: 0, textEncodingName: "UTF-8")
 
+            let cResponse = CachedURLResponse(response: response, data: data!)
 
+            cache.storeCachedResponse(cResponse, for: request)
 
-    /*
-    // MARK: - Navigation
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("start")
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("error\(error.localizedDescription)")
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print("failP\(error.localizedDescription)")
+    }
 
 }

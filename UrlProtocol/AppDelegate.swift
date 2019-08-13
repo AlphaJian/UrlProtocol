@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: AViewController())
         window?.makeKeyAndVisible()
+
+        URLCache.shared = URLCache(memoryCapacity: 25 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: nil)
+//        URLProtocol.registerClass(MyUrlProtocol.classForCoder())
         return true
     }
 
